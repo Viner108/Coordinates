@@ -16,15 +16,18 @@ public class Test {
         Vector3D coordinates2 = new Vector3D(15, 23, 13);
         int lenght2 = coordinates2.lenght();
         coordinates2.printState(lenght2);
-        int product1=coordinates.scalarproduct(coordinates,coordinates2);
+        int product1=coordinates.scalarproduct(coordinates2);
         coordinates.printState(product1);
-        int []product2 = coordinates.vectorproduct(coordinates,coordinates2);
+        int []product2 = coordinates.vectorproduct(coordinates2);
         coordinates.printLines(product2);
-        int cos = coordinates.cos(coordinates,coordinates2);
+        int cos = coordinates.cos(coordinates2);
         coordinates.printState(cos);
-        int[] sum = coordinates.sum(coordinates,coordinates2);
+        int[] sum = coordinates.sum(coordinates2);
         coordinates.printLines(sum);
-        int[] difference = coordinates.difference(coordinates,coordinates2);
+        int[] difference = coordinates.difference(coordinates2);
         coordinates.printLines(difference);
+        int count = coordinates.count;
+        int count2 = coordinates2.count;
+        int count3 = Vector3D.count;
     }
 }

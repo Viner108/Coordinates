@@ -3,13 +3,9 @@ package Task;
 import java.util.Random;
 
 public class Vector3D {
-    public static void main(String[] args) {
-        int N = 5;
-        int[][] vectors = getVectors(N);
-        printLines(vectors);
-    }
+    public static int N=5;
     int x;
-
+    public static int count=0;
     int y;
 
     int z;
@@ -22,6 +18,7 @@ public class Vector3D {
         this.x = x;
         this.y = y;
         this.z = z;
+        count++;
     }
 
     void printState(int i) {
@@ -29,38 +26,34 @@ public class Vector3D {
     }
 
     public int lenght() {
-        int lenght;
-        lenght = (int) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
-        return lenght;
+        return (int) Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
     }
 
-    public int scalarproduct(Vector3D coordinate1, Vector3D coordinate2) {
-        int product;
-        product = coordinate1.x * coordinate2.x + coordinate1.y * coordinate2.y + coordinate1.z * coordinate2.z;
+    public int scalarproduct(Vector3D coordinate2) {
+        int product = this.x * coordinate2.x + this.y * coordinate2.y + this.z * coordinate2.z;
         return product;
     }
 
-    public int[] vectorproduct(Vector3D coordinate1, Vector3D coordinate2) {
-        int[] product;
-        product = new int[]{coordinate1.y * coordinate2.z - coordinate1.z * coordinate2.y, coordinate1.z * coordinate2.x - coordinate1.x * coordinate2.z, coordinate1.x * coordinate2.y - coordinate1.y * coordinate2.x};
-        return product;
+    public int[] vectorproduct( Vector3D coordinate2) {
+        return new int[]{this.y * coordinate2.z -this.z * coordinate2.y, this.z * coordinate2.x - this.x * coordinate2.z, this.x * coordinate2.y - this.y * coordinate2.x};
     }
 
-    public int cos(Vector3D coordinate1, Vector3D coordinate2) {
+    public int cos( Vector3D coordinate2) {
         int cos;
-        cos =scalarproduct(coordinate1,coordinate2)/Math.abs(coordinate1.lenght() * coordinate2.lenght());
+        cos = scalarproduct(coordinate2) / Math.abs(this.lenght() * coordinate2.lenght());
         return cos;
     }
 
-    public int[] sum(Vector3D coordinate1, Vector3D coordinate2) {
-        int[] sum = {coordinate1.x + coordinate2.x, coordinate1.y +coordinate2.y, coordinate1.z + coordinate2.z};
+    public int[] sum( Vector3D coordinate2) {
+        int[] sum = {this.x + coordinate2.x, this.y + coordinate2.y, this.z + coordinate2.z};
         return sum;
     }
 
-    public int[] difference(Vector3D coordinate1, Vector3D coordinate2) {
-        int[] difference = {coordinate1.x - coordinate2.x, coordinate1.y - coordinate2.y, coordinate1.z - coordinate2.z};
+    public int[] difference( Vector3D coordinate2) {
+        int[] difference = {this.x - coordinate2.x, this.y - coordinate2.y, this.z - coordinate2.z};
         return difference;
     }
+
     public void printLines(int[] array) {
         System.out.print("[");
         for (int i = 0; i < array.length; i++) {
@@ -71,6 +64,7 @@ public class Vector3D {
         }
         System.out.println("]");
     }
+
     private static int[][] getVectors(int N) {
         Random random = new Random();
         int[][] vectors = new int[N][];
@@ -83,17 +77,6 @@ public class Vector3D {
         }
 
         return vectors;
-    }
-
-    private static void printLines(int[][] lines) {
-        System.out.println();
-        for (int[] line : lines) {
-            for (int i : line) {
-                System.out.printf(" %3d", i);
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 }
 
